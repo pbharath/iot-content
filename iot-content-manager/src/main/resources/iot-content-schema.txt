@@ -1,0 +1,8 @@
+// Create Keyspace
+CREATE KEYSPACE IF NOT EXISTS IotContentSpace WITH replication = { 'class':'SimpleStrategy', 'replication_factor':1};
+
+// Drop existing tables
+DROP TABLE IF EXISTS IotContentSpace.Content_Access;
+
+// Create tables
+CREATE TABLE IF NOT EXISTS IotContentSpace.Content_Access(carrier_name TEXT, user_id UUID, content_types set<TEXT>, access_result BOOLEAN, timeStamp TIMESTAMP, PRIMARY KEY ((carrier_name), user_id));
